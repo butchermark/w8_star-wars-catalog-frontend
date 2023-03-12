@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link-div:link {
+  color: transparent;
+}
+.link-div:visited {
+  color: transparent;
+}

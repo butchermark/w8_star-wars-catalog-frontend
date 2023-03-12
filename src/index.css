@@ -1,13 +1,17 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Starjedi;
+  width: 100%;
+  min-height: 100%;
+  background: url("/src/assets/backgrounds/star-wars-backgrounds-14_856985d9.webp");
+}
+@font-face {
+  font-family: "Starjedi";
+  src: local("Starjedi"),
+    url("/src/assets/font/Starjedi.ttf") format("truetype");
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

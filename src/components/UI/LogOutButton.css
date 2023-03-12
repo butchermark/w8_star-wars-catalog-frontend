@@ -1,0 +1,6 @@
+.log-out-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}

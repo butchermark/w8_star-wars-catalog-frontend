@@ -1,0 +1,18 @@
+.data-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.data-div p {
+  color: white;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.data-lower-div {
+  border: 5px yellow solid;
+  border-radius: 20px;
+  padding: 20px;
+}

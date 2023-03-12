@@ -1,0 +1,51 @@
+import { useContext, useEffect, useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import CharacterDetailedPage from "../components/pages/CharacterDetailedPage";
+import ListPage from "../components/pages/ListPage";
+import LoginPage from "../components/pages/LoginPage";
+import StarWarsContext from "../context/StarWarsContext";
+
+const PageRouter = () => {
+  const { accessToken } = useContext(StarWarsContext);
+
+  const getAccessToken = localStorage.getItem("accessToken");
+
+  return (
+    <BrowserRouter>
+      {getAccessToken ? (
+        <Routes>
+          <Route path="/listed" element={<ListPage />} />
+          <Route path="/listed/*" element={<Navigate to="/listed" />} />
+          <Route
+            path="/listed/:characterid"
+            element={<CharacterDetailedPage />}
+          />
+          <Route
+            path="/listed/:characterid/*"
+            element={<CharacterDetailedPage />}
+          />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/listed" element={<Navigate to="/login" />} />
+          <Route path="/listed/*" element={<Navigate to="/login" />} />
+          <Route
+            path="/listed/:characterid"
+            element={<Navigate to="/login" />}
+          />
+          <Route
+            path="/listed/:characterid/*"
+            element={<Navigate to="/login" />}
+          />
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      )}
+    </BrowserRouter>
+  );
+};
+export default PageRouter;

@@ -1,0 +1,24 @@
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.title-div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+h1 {
+  width: 100%;
+}
+.list-page-main-div {
+  height: 100%;
+}
+.list-div {
+  height: 100%;
+  margin-bottom: 5px;
+}
+.list-div p {
+  color: white;
+}
