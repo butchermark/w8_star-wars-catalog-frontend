@@ -21,10 +21,13 @@ const CharactersList = () => {
   } = useContext(StarWarsContext);
   const [isLoading, setIsLoading] = useState(false);
   const [characters, setCharacters] = useState<ICharactersData[]>([]);
-  const [filterValue, setFilterValue] = useState("male");
+  const [filterValue, setFilterValue] = useState("");
   const [sortValue, setSortValue] = useState("");
   const [isFilter, setIsFilter] = useState(false);
   const [isSort, setIsSort] = useState(false);
+  const [standardCharacters, setStandardCharacters] = useState<
+    ICharactersData[]
+  >([]);
 
   useEffect(() => {
     setIsSort(false);
@@ -36,6 +39,7 @@ const CharactersList = () => {
           .get(`https://swapi.dev/api/people/?page=${pageNumber}`)
           .then((res) => {
             setCharacters(res.data.results);
+            setStandardCharacters(res.data.results);
             setIsThereNextPage(res.data.next);
             setIsTherePrevPage(res.data.previous);
           });
@@ -47,19 +51,6 @@ const CharactersList = () => {
     };
     getCharacters();
   }, [siteSwitch, pageNumber]);
-
-  const filterArray = (array: ICharactersData[]) => {
-    if (filterValue === "male") {
-      return array.filter((character: ICharactersData) => {
-        return character.gender === "male";
-      });
-    }
-    if (filterValue === "female") {
-      return array.filter((character: ICharactersData) => {
-        return character.gender === "female";
-      });
-    }
-  };
 
   const setSortValueHandler = (value: any) => {
     setSortValue(value);
@@ -93,14 +84,35 @@ const CharactersList = () => {
     }
   }, [sortValue, pageNumber]);
 
-  useEffect(() => {
-    filterArray(characters);
-  }, [filterValue]);
-
   const filterCharactersHandler = (value: any) => {
-    setIsFilter(true);
     setFilterValue(value);
+    setIsFilter(true);
   };
+
+  useEffect(() => {
+    if (filterValue === "") {
+      setCharacters(standardCharacters);
+      console.log(standardCharacters);
+    }
+    if (filterValue === "male") {
+      const filtered = standardCharacters.filter(
+        (character: ICharactersData) => {
+          return character.gender === "male";
+        }
+      );
+      setCharacters(filtered);
+      console.log([...filtered]);
+    }
+    if (filterValue === "female") {
+      const filtered = standardCharacters.filter(
+        (character: ICharactersData) => {
+          return character.gender === "female";
+        }
+      );
+      setCharacters(filtered);
+      console.log([...filtered]);
+    }
+  }, [filterValue, pageNumber]);
 
   useEffect(() => {
     if (loading) {
@@ -117,7 +129,7 @@ const CharactersList = () => {
   return (
     <div className="list-div">
       <div className="page-buttons-div">
-        <DropDownFiltering filterCharactersHandler={filterCharactersHandler} />
+        <DropDownFiltering setFilterValue={filterCharactersHandler} />
         <PrevPageButton />
         <NextPageButton />
         <DropDownSorting setSortValue={setSortValueHandler} />

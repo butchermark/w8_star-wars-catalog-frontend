@@ -1,8 +1,8 @@
 import { DropDownSelect } from "./DropDownSelector.styled";
 
-const DropDownFiltering = ({ filterCharactersHandler }: any) => {
+const DropDownFiltering = ({ setFilterValue }: any) => {
   const onFilterChangeHandler = (event: any) => {
-    filterCharactersHandler(event.target.value);
+    setFilterValue(event.target.value);
   };
 
   return (
