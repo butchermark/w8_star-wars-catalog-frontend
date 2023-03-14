@@ -1,13 +1,9 @@
-import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import CharacterDetailedPage from "../components/pages/CharacterDetailedPage";
+import CharacterDetailedPage from "../components/pages/DetailPage";
 import ListPage from "../components/pages/ListPage";
 import LoginPage from "../components/pages/LoginPage";
-import StarWarsContext from "../context/StarWarsContext";
 
 const PageRouter = () => {
-  const { accessToken } = useContext(StarWarsContext);
-
   const getAccessToken = localStorage.getItem("accessToken");
 
   return (

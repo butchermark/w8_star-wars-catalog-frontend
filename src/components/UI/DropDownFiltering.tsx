@@ -1,9 +1,6 @@
-import { useContext } from "react";
-import StarWarsContext from "../../context/StarWarsContext";
 import { DropDownSelect } from "./DropDownSelector.styled";
 
-const DropDownFiltering = () => {
-  const { filterCharactersHandler } = useContext(StarWarsContext);
+const DropDownFiltering = ({ filterCharactersHandler }: any) => {
   const onFilterChangeHandler = (event: any) => {
     filterCharactersHandler(event.target.value);
   };

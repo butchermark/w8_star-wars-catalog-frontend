@@ -5,7 +5,7 @@ import StarWarsContext from "../../context/StarWarsContext";
 import { ICharactersData } from "../../interface/ICharactersData.interface";
 import Button from "../UI/Button.styled";
 import LogOutButton from "../UI/LogOutButton";
-import "./CharacterDetailedPage.css";
+import "./DetailPage.css";
 
 const CharacterDetailed = () => {
   const [characterData, setCharacterData] = useState<ICharactersData>();

@@ -1,13 +1,9 @@
-import { useContext } from "react";
-import StarWarsContext from "../../context/StarWarsContext";
 import { DropDownSelect } from "./DropDownSelector.styled";
 
-const DropDownSorting = () => {
-  const { sortCharactersHandler } = useContext(StarWarsContext);
+const DropDownSorting = ({ setSortValue }: any) => {
   const onSortingChangeHandler = (event: any) => {
-    sortCharactersHandler(event.target.value);
+    setSortValue(event.target.value);
   };
-
   return (
     <div
       className="drop-down-selector-div"

@@ -10,25 +10,11 @@ import "./ListPage.css";
 const ListPage = () => {
   const { isAccessToken, setIsAccessToken, accessToken } =
     useContext(StarWarsContext);
-  const [isWindowOnPop, setIsWindowOnPop] = useState(false);
 
   const deleteToken = () => {
     localStorage.removeItem("accessToken");
     setIsAccessToken(false);
   };
-
-  useEffect(() => {
-    const checkOnPop = () => {
-      window.onpopstate = () => {
-        if (isAccessToken) {
-          setIsWindowOnPop(true);
-        } else {
-          setIsWindowOnPop(false);
-        }
-      };
-    };
-    checkOnPop();
-  }, []);
 
   return (
     <div className="list-page-main-div">
