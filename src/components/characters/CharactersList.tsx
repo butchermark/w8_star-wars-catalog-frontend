@@ -18,25 +18,29 @@ const CharactersList = () => {
     siteSwitch,
     setIsThereNextPage,
     setIsTherePrevPage,
+    accessToken,
   } = useContext(StarWarsContext);
   const [isLoading, setIsLoading] = useState(false);
   const [characters, setCharacters] = useState<ICharactersData[]>([]);
   const [filterValue, setFilterValue] = useState("");
   const [sortValue, setSortValue] = useState("");
-  const [isFilter, setIsFilter] = useState(false);
-  const [isSort, setIsSort] = useState(false);
   const [standardCharacters, setStandardCharacters] = useState<
     ICharactersData[]
   >([]);
 
   useEffect(() => {
-    setIsSort(false);
-    setIsFilter(false);
     const getCharacters = async () => {
       try {
         setLoading(true);
         await axios
-          .get(`https://swapi.dev/api/people/?page=${pageNumber}`)
+          .get(
+            `http://localhost:3000/swapi/characters?pageNumber=${pageNumber}`,
+            {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          )
           .then((res) => {
             setCharacters(res.data.results);
             setStandardCharacters(res.data.results);
@@ -54,7 +58,6 @@ const CharactersList = () => {
 
   const setSortValueHandler = (value: any) => {
     setSortValue(value);
-    setIsSort(true);
   };
 
   useEffect(() => {
@@ -86,7 +89,6 @@ const CharactersList = () => {
 
   const filterCharactersHandler = (value: any) => {
     setFilterValue(value);
-    setIsFilter(true);
   };
 
   useEffect(() => {

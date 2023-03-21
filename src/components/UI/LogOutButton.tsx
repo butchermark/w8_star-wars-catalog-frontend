@@ -1,12 +1,20 @@
-import { useContext } from "react";
+import axios from "axios";
+import { loadavg } from "os";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import StarWarsContext from "../../context/StarWarsContext";
 import Button from "./Button.styled";
 import "./LogOutButton.css";
 
 const LogOutButton = () => {
-  const { accessToken, setLoading, setSiteSwitch } =
-    useContext(StarWarsContext);
+  const {
+    accessToken,
+    pageNumber,
+    siteSwitch,
+    loading,
+    setLoading,
+    setSiteSwitch,
+  } = useContext(StarWarsContext);
 
   const handleLogOut = () => {
     localStorage.removeItem("accessToken");

@@ -1,6 +1,4 @@
-import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import { ICharactersData } from "../interface/ICharactersData.interface";
 import { IContextData } from "../interface/IContextData.interface";
 
 const StarWarsContext = createContext({} as IContextData);

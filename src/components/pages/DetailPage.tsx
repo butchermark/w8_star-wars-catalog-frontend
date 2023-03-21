@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import StarWarsContext from "../../context/StarWarsContext";
 import { ICharactersData } from "../../interface/ICharactersData.interface";
 import Button from "../UI/Button.styled";
 import LogOutButton from "../UI/LogOutButton";

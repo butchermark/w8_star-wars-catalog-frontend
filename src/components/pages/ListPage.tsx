@@ -1,5 +1,5 @@
-import { url } from "inspector";
-import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import StarWarsContext from "../../context/StarWarsContext";
 import CharactersList from "../characters/CharactersList";
@@ -8,8 +8,13 @@ import LogOutButton from "../UI/LogOutButton";
 import "./ListPage.css";
 
 const ListPage = () => {
-  const { isAccessToken, setIsAccessToken, accessToken } =
-    useContext(StarWarsContext);
+  const {
+    isAccessToken,
+    setIsAccessToken,
+    pageNumber,
+    siteSwitch,
+    accessToken,
+  } = useContext(StarWarsContext);
 
   const deleteToken = () => {
     localStorage.removeItem("accessToken");
