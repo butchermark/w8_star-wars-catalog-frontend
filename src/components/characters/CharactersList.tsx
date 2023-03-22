@@ -94,7 +94,6 @@ const CharactersList = () => {
   useEffect(() => {
     if (filterValue === "") {
       setCharacters(standardCharacters);
-      console.log(standardCharacters);
     }
     if (filterValue === "male") {
       const filtered = standardCharacters.filter(
@@ -103,7 +102,6 @@ const CharactersList = () => {
         }
       );
       setCharacters(filtered);
-      console.log([...filtered]);
     }
     if (filterValue === "female") {
       const filtered = standardCharacters.filter(
@@ -112,7 +110,6 @@ const CharactersList = () => {
         }
       );
       setCharacters(filtered);
-      console.log([...filtered]);
     }
   }, [filterValue, pageNumber]);
 
@@ -124,8 +121,8 @@ const CharactersList = () => {
     }
   }, [loading]);
 
-  const calculateIndex = (index: number) => {
-    return (pageNumber - 1) * 10 + (index + 1);
+  const convertURL = (character: ICharactersData) => {
+    return parseFloat(character.url.split("/")[5]);
   };
 
   return (
@@ -141,7 +138,7 @@ const CharactersList = () => {
           <div className="loading-p">Loading...</div>
         ) : (
           <Grid container spacing={3} justifyContent="center">
-            {characters.map((character: ICharactersData, index: number) => (
+            {characters.map((character: ICharactersData) => (
               <Grid
                 key={character.name}
                 item
@@ -156,7 +153,10 @@ const CharactersList = () => {
               >
                 <CharactersCard
                   character={character}
+                  /*
                   index={calculateIndex(index)}
+                  */
+                  index={convertURL(character)}
                 ></CharactersCard>
               </Grid>
             ))}

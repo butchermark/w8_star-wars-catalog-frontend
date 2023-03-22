@@ -11,18 +11,6 @@ const PrevPageButton = () => {
     setPageNumber(pageNumber - 1);
   };
 
-  /*
-  useEffect(() => {
-    if (pageNumber) {
-      setPageNumber(pageNumber - 1);
-      console.log(pageNumber);
-    }
-  }, [isAddPrevPageNumber]);
-
-  const addPrevPageNumberHandler = () => {
-    setIsAddPrevPageNumber(isAddPrevPageNumber + 1);
-  };
-  */
   return (
     <div>
       <Button

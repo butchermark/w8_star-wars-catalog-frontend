@@ -11,21 +11,6 @@ const NextPageButton = () => {
     setPageNumber(pageNumber + 1);
   };
 
-  /*
-  const [isAddNextPageNumber, setIsAddNextPageNumber] = useState(0);
-
-  useEffect(() => {
-    if (pageNumber) {
-      setPageNumber(pageNumber + 1);
-      console.log(pageNumber);
-    }
-  }, [isAddNextPageNumber]);
-
-  const addNextPageNumberHandler = () => {
-    setIsAddNextPageNumber(isAddNextPageNumber + 1);
-  };
-*/
-
   return (
     <div>
       <Button
