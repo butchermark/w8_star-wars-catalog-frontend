@@ -8,8 +8,8 @@ import StarWarsContext from "../context/StarWarsContext";
 const PageRouter = () => {
   const { isAccessToken, setIsAccessToken, accessToken } =
     useContext(StarWarsContext);
-  ///ITT MI TÖRTÉNIK???
   const getAccessToken = localStorage.getItem("accessToken");
+  ///ITT MI TÖRTÉNIK???
 
   return (
     <BrowserRouter>

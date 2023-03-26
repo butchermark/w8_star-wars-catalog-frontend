@@ -4,7 +4,9 @@ import { IContextData } from "../interface/IContextData.interface";
 const StarWarsContext = createContext({} as IContextData);
 
 export const StarWarsProvider = ({ children }: any) => {
-  const [accessToken, setAccesstoken] = useState(undefined);
+  const [accessToken, setAccesstoken] = useState(
+    localStorage.getItem("accessToken")
+  );
   const [isAccessToken, setIsAccessToken] = useState(false);
   const [isThereNextPage, setIsThereNextPage] = useState("");
   const [isTherePrevPage, setIsTherePrevPage] = useState("");

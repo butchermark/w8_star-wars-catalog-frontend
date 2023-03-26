@@ -18,6 +18,8 @@ const CharactersList = () => {
     siteSwitch,
     setIsThereNextPage,
     setIsTherePrevPage,
+    isThereNextPage,
+    isTherePrevPage,
     accessToken,
   } = useContext(StarWarsContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -32,9 +34,12 @@ const CharactersList = () => {
     const getCharacters = async () => {
       try {
         setLoading(true);
+
         await axios
           .get(
-            `http://localhost:3000/swapi/characters?pageNumber=${pageNumber}`,
+            `http://localhost:3000/swapi/characters?pageNumber=${
+              pageNumber ?? 1
+            }`,
             {
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -42,16 +47,23 @@ const CharactersList = () => {
             }
           )
           .then((res) => {
+            if (res.data === "") {
+              return;
+            } else {
+              setCharacters(res.data.results);
+            }
             setCharacters(res.data.results);
             setStandardCharacters(res.data.results);
             setIsThereNextPage(res.data.next);
             setIsTherePrevPage(res.data.previous);
+            setLoading(false);
+            console.log(accessToken);
           });
       } catch (err) {
         console.log(err);
-      } finally {
-        setLoading(false);
+        setCharacters([]);
       }
+      setLoading(false);
     };
     getCharacters();
   }, [siteSwitch, pageNumber]);

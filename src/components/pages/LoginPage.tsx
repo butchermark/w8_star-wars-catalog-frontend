@@ -6,7 +6,7 @@ import Button from "../UI/Button.styled";
 import "./LoginPage.css";
 
 const LoginPage = () => {
-  const { setAccesstoken, setLoading, setSiteSwitch } =
+  const { setAccesstoken, setLoading, setSiteSwitch, setIsAccessToken } =
     useContext(StarWarsContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -50,6 +50,7 @@ const LoginPage = () => {
 
   const handleSubmit = (e: any) => {
     setIsSubmit(true);
+    setIsAccessToken(true);
   };
 
   return (

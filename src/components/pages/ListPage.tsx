@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import StarWarsContext from "../../context/StarWarsContext";
@@ -8,13 +7,7 @@ import LogOutButton from "../UI/LogOutButton";
 import "./ListPage.css";
 
 const ListPage = () => {
-  const {
-    isAccessToken,
-    setIsAccessToken,
-    pageNumber,
-    siteSwitch,
-    accessToken,
-  } = useContext(StarWarsContext);
+  const { isAccessToken, setIsAccessToken } = useContext(StarWarsContext);
 
   const deleteToken = () => {
     localStorage.removeItem("accessToken");
@@ -23,7 +16,7 @@ const ListPage = () => {
 
   return (
     <div className="list-page-main-div">
-      {!isAccessToken ? (
+      {isAccessToken ? (
         <div className="list-div">
           <div className="title-div">
             <h1 className="title">Star Wars Catalog</h1>
